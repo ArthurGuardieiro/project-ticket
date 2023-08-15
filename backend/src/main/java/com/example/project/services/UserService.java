@@ -64,9 +64,6 @@ public class UserService {
             User entity = obj.orElseThrow( () -> new ResourceNotFoundException("id not found " + id) );
             repository.delete(entity);
         }
-        catch(EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException("id not found " + id);
-        }
         catch(DataIntegrityViolationException e) {
             throw new DatabaseException("Integrity violation");
         }
