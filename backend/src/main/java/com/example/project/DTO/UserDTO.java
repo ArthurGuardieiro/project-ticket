@@ -16,7 +16,8 @@ public class UserDTO implements Serializable {
 
     @Email(message = "Entre com um email válido")
     private String email;
-    private RoleDTO role;
+    private Long role_id;
+    private Long city_id;
 
     public UserDTO() {
 
@@ -32,6 +33,8 @@ public class UserDTO implements Serializable {
         this.id = entity.getId();
         this.name = entity.getName();
         this.email = entity.getEmail();
+        this.role_id = entity.getRole().getId();
+        this.city_id = entity.getCity().getId();
     }
 
     public String getName() {
@@ -58,5 +61,19 @@ public class UserDTO implements Serializable {
         this.id = id;
     }
 
+    public Long getRole_id() {
+        return role_id;
+    }
 
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
+    }
+
+    public Long getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(Long city_id) {
+        this.city_id = city_id;
+    }
 }

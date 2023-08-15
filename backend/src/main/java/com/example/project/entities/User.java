@@ -1,5 +1,6 @@
 package com.example.project.entities;
 
+import com.example.project.DTO.UserInsertDTO;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -74,6 +75,22 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override
