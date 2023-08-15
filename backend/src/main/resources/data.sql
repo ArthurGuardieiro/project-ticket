@@ -13,6 +13,7 @@ INSERT INTO tb_user (email, password, name, role_id, city_id) VALUES ('marta@gma
 
 INSERT INTO tb_event (name, addres, city_id) VALUES ('CIA', 'Centro Park', 4);
 INSERT INTO tb_event (name, addres, city_id) VALUES ('OpenArq', 'Casteli', 1);
+INSERT INTO tb_event (name, addres, city_id) VALUES ('The One', 'London', 1);
 INSERT INTO tb_event (name, addres, city_id) VALUES ('Balada da Barra', 'Barra da tijuca', 2);
 INSERT INTO tb_event (name, addres, city_id) VALUES ('Calvin Harris', 'Morumbi', 3);
 
