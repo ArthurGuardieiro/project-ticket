@@ -16,12 +16,20 @@ public class CityService {
     @Autowired
     private CityRepository repository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public CityDTO findById(Long id) {
         Optional<City> obj = repository.findById(id);
         City city = obj.orElseThrow( () -> new ResourceNotFoundException("id not found"));
         return new CityDTO(city);
     }
 
+
+    public CityDTO insert(CityDTO dto) {
+        City entity = new City();
+        entity.setName( dto.getName() );
+        entity.setState( dto.getState() );
+        entity = repository.save(entity);
+        return new CityDTO(entity);
+    }
 
 }

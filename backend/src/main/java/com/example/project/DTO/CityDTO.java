@@ -1,11 +1,14 @@
 package com.example.project.DTO;
 
 import com.example.project.entities.City;
+import jakarta.validation.constraints.NotBlank;
 
 public class CityDTO {
 
     private Long id;
+    @NotBlank(message = "campo obrigatório")
     private String name;
+    @NotBlank(message = "campo obrigatório")
     private String state;
 
     public CityDTO(){
