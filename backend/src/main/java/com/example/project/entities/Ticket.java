@@ -48,6 +48,22 @@ public class Ticket implements Serializable {
         this.price = price;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
