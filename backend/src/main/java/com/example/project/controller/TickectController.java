@@ -4,11 +4,10 @@ import com.example.project.DTO.TicketDTO;
 import com.example.project.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -28,6 +27,14 @@ public class TickectController {
     public ResponseEntity<List<TicketDTO>> findTicketsByUserId(@PathVariable Long userId) {
         List<TicketDTO> dto = service.findTicketsByUserId(userId);
         return ResponseEntity.ok(dto);
+    }
+
+    @PostMapping
+    public ResponseEntity<TicketDTO> insert (@RequestBody TicketDTO dto) {
+        TicketDTO newDto = service.insert(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}")
+                .buildAndExpand(newDto.getId()).toUri();
+        return ResponseEntity.created(uri).body(newDto);
     }
 
 }

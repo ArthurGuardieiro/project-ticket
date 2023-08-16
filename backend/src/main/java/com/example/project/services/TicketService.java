@@ -43,7 +43,9 @@ public class TicketService {
 
     public TicketDTO insert (TicketDTO dto) {
         Ticket entity = new Ticket();
-
+        copyDtoToEntity(entity, dto);
+        entity = repository.save(entity);
+        return new TicketDTO(entity);
     }
 
     private void copyDtoToEntity (Ticket entity, TicketDTO dto) {
@@ -51,7 +53,9 @@ public class TicketService {
         Event event = objEvent.orElseThrow( () -> new ResourceNotFoundException("Event id not found!") );
         entity.setEvent(event);
         Optional<User> objUser = userRepository.findById(dto.getUser_id());
-        User user =
+        User user = objUser.orElseThrow( () -> new ResourceNotFoundException("User id not found!"));
+        entity.setUser(user);
+        entity.setPrice(dto.getPrice());
     }
 
 }
