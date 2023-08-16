@@ -1,8 +1,11 @@
 package com.example.project.controller;
 
 import com.example.project.DTO.EventDTO;
+import com.example.project.entities.Event;
 import com.example.project.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,6 +24,12 @@ public class EventController {
     public ResponseEntity<EventDTO> findById (@PathVariable Long id) {
         EventDTO dto = service.findById(id);
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<EventDTO>> findAll(Pageable pageable) {
+        Page<EventDTO> page = service.findAllPaged(pageable);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping(value = "/{cityId}/events")

@@ -7,6 +7,8 @@ import com.example.project.repositories.CityRepository;
 import com.example.project.repositories.EventRepository;
 import com.example.project.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +40,12 @@ public class EventService {
         List<Event> events = repository.findEventsByCityId(cityId);
         List<EventDTO> eventDTOS = events.stream().map( x -> new EventDTO(x) ).collect(Collectors.toList());
         return eventDTOS;
+    }
+
+    @Transactional(readOnly = true)
+    public Page<EventDTO> findAllPaged(Pageable pageable) {
+        Page<Event> page = repository.findAll(pageable);
+        return page.map(x -> new EventDTO(x));
     }
 
     @Transactional
