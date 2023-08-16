@@ -1,1 +1,10 @@
-https://api.postman.com/collections/27633928-17680f53-6b89-4198-91c8-e6b82ee34ba6?access_key=PMAT-01H7XD03X38DZ6SJ9GTRVFVTN1
+# Project Ticket
+
+![Badge em Desenvolvimento](https://img.shields.io/badge/STATUS-EM_DESENVOLVIMENTO-green)
+
+# Sobre o projeto
+
+Project Ticket é uma aplicação backend de um sistema de venda de ingressos online. A aplicação visa executar operações de CRUD que considero relevantes para o funcionamento do sistema. Posteriormente, desejo transformá-lo em uma aplicação fullstack.
+
+## Modelo conceitual
+![Modelo Conceitual]()
