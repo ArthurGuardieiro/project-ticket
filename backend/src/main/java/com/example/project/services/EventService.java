@@ -31,7 +31,7 @@ public class EventService {
         return new EventDTO(entity);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<EventDTO> findEventsByCityId(Long cityId) {
         Optional<City> obj = cityRepository.findById(cityId);
         obj.orElseThrow( () -> new ResourceNotFoundException("city id not found") );
@@ -40,15 +40,20 @@ public class EventService {
         return eventDTOS;
     }
 
+    @Transactional
     public EventDTO insert (EventDTO dto) {
         Event entity = new Event();
+        copyDtoToEntity(entity, dto);
+        entity = repository.save(entity);
+        return new EventDTO(entity);
+    }
+
+    private void copyDtoToEntity(Event entity, EventDTO dto) {
         entity.setName( dto.getName() );
         entity.setAddres( dto.getAddres() );
         Optional<City> obj = cityRepository.findById( dto.getCityId() );
         City city =  obj.orElseThrow( () -> new ResourceNotFoundException("city id not found") );
         entity.setCity(city);
-        entity = repository.save(entity);
-        return new EventDTO(entity);
     }
 
 }

@@ -10,6 +10,7 @@ import com.example.project.repositories.UserRepository;
 import com.example.project.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,12 +28,14 @@ public class TicketService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Transactional(readOnly = true)
     public TicketDTO findById (Long id) {
         Optional<Ticket> obj = repository.findById(id);
         Ticket entity = obj.orElseThrow( () -> new ResourceNotFoundException("id not found"));
         return new TicketDTO(entity);
     }
 
+    @Transactional(readOnly = true)
     public List<TicketDTO> findTicketsByUserId (Long userId) {
         Optional<User> obj = userRepository.findById(userId);
         obj.orElseThrow(() -> new ResourceNotFoundException("user id not found"));
@@ -41,6 +44,7 @@ public class TicketService {
         return ticketDTOS;
     }
 
+    @Transactional
     public TicketDTO insert (TicketDTO dto) {
         Ticket entity = new Ticket();
         copyDtoToEntity(entity, dto);
