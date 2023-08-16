@@ -40,5 +40,15 @@ public class EventService {
         return eventDTOS;
     }
 
+    public EventDTO insert (EventDTO dto) {
+        Event entity = new Event();
+        entity.setName( dto.getName() );
+        entity.setAddres( dto.getAddres() );
+        Optional<City> obj = cityRepository.findById( dto.getCityId() );
+        City city =  obj.orElseThrow( () -> new ResourceNotFoundException("city id not found") );
+        entity.setCity(city);
+        entity = repository.save(entity);
+        return new EventDTO(entity);
+    }
 
 }
