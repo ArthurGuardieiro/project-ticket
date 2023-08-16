@@ -51,6 +51,7 @@ public class EventService {
     private void copyDtoToEntity(Event entity, EventDTO dto) {
         entity.setName( dto.getName() );
         entity.setAddres( dto.getAddres() );
+        entity.setDate( dto.getDate() );
         Optional<City> obj = cityRepository.findById( dto.getCityId() );
         City city =  obj.orElseThrow( () -> new ResourceNotFoundException("city id not found") );
         entity.setCity(city);

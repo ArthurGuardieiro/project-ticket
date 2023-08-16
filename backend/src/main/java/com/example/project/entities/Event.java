@@ -3,6 +3,7 @@ package com.example.project.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,7 @@ public class Event implements Serializable {
     private Long id;
     private String name;
     private String addres;
+    private Instant date;
 
     @ManyToOne
     @JoinColumn(name = "city_id")
@@ -29,11 +31,12 @@ public class Event implements Serializable {
 
     }
 
-    public Event(Long id, String name, String addres, City city) {
+    public Event(Long id, String name, String addres, City city, Instant date) {
         this.id = id;
         this.name = name;
         this.addres = addres;
         this.city = city;
+        this.date = date;
     }
 
     public Long getId() {
@@ -66,6 +69,14 @@ public class Event implements Serializable {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
 
     public List<Ticket> getTickets() {

@@ -11,11 +11,11 @@ INSERT INTO tb_user (email, password, name, role_id, city_id) VALUES ('joao@gmai
 INSERT INTO tb_user (email, password, name, role_id, city_id) VALUES ('maria@gmail.com', 'senha123', 'maria', 1, 3);
 INSERT INTO tb_user (email, password, name, role_id, city_id) VALUES ('marta@gmail.com', 'senha123', 'marta', 1, 4);
 
-INSERT INTO tb_event (name, addres, city_id) VALUES ('CIA', 'Centro Park', 4);
-INSERT INTO tb_event (name, addres, city_id) VALUES ('OpenArq', 'Casteli', 1);
-INSERT INTO tb_event (name, addres, city_id) VALUES ('The One', 'London', 1);
-INSERT INTO tb_event (name, addres, city_id) VALUES ('Balada da Barra', 'Barra da tijuca', 2);
-INSERT INTO tb_event (name, addres, city_id) VALUES ('Calvin Harris', 'Morumbi', 3);
+INSERT INTO tb_event (name, addres, city_id, date) VALUES ('CIA 2023', 'Centro Park', 4, TIMESTAMP WITH TIME ZONE '2023-06-14T14:00:00Z');
+INSERT INTO tb_event (name, addres, city_id, date) VALUES ('OpenArq', 'Casteli', 1, TIMESTAMP WITH TIME ZONE '2023-07-17T21:00:00Z');
+INSERT INTO tb_event (name, addres, city_id, date) VALUES ('The One', 'London', 1, TIMESTAMP WITH TIME ZONE '2023-08-20T22:00:00Z');
+INSERT INTO tb_event (name, addres, city_id, date) VALUES ('Balada da Barra', 'Barra da tijuca', 2, TIMESTAMP WITH TIME ZONE '2023-06-14T14:00:00Z');
+INSERT INTO tb_event (name, addres, city_id, date) VALUES ('Calvin Harris', 'Morumbi', 3, TIMESTAMP WITH TIME ZONE '2023-06-14T14:00:00Z');
 
 INSERT INTO tb_ticket (price, user_id, event_id) VALUES (300.0, 1, 1);
 INSERT INTO tb_ticket (price, user_id, event_id) VALUES (550.0, 2, 1);

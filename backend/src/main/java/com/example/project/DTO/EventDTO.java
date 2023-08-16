@@ -2,21 +2,25 @@ package com.example.project.DTO;
 
 import com.example.project.entities.Event;
 
+import java.time.Instant;
+
 public class EventDTO {
 
     private Long id;
     private String name;
     private String addres;
+    private Instant date;
     private Long cityId;
 
     public EventDTO() {
 
     }
 
-    public EventDTO(Long id, String name, String addres, Long cityId) {
+    public EventDTO(Long id, String name, String addres, Instant date, Long cityId) {
         this.id = id;
         this.name = name;
         this.addres = addres;
+        this.date = date;
         this.cityId = cityId;
     }
 
@@ -24,6 +28,7 @@ public class EventDTO {
         this.id = entity.getId();
         this.name = entity.getName();
         this.addres = entity.getAddres();
+        this.date = entity.getDate();
         this.cityId = entity.getCity().getId();
     }
 
@@ -57,5 +62,13 @@ public class EventDTO {
 
     public void setCityId(Long cityId) {
         this.cityId = cityId;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
 }
