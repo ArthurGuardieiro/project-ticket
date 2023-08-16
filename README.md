@@ -11,3 +11,25 @@ Project Ticket é uma aplicação backend de um sistema de venda de ingressos on
 <p align="center">
     <img height="800" width="1000" src="./assets/images/project-ticket.png">
 </p>
+
+## Tecnologias utilizadas 
+
+- Java
+- Spring Boot
+- JPA / Hibernate
+- Maven
+
+## Como executar o projeto 
+
+Pré-requisitos: Java 17
+
+```bash
+# clone o repositório
+git clone https://github.com/ArthurGuardieiro/project-ticket.git
+
+# entre na pasta backend do projeto
+cd backend
+
+# execute o projeto
+./mvnw spring-boot:run 
+```
