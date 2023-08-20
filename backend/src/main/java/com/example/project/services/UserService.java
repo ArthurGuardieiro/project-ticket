@@ -38,14 +38,6 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO insert(UserInsertDTO dto){
-        User entity = new User();
-        copyDtoToEntity(entity, dto);
-        entity = repository.save(entity);
-        return new UserDTO(entity);
-    }
-
-    @Transactional
     public UserDTO update(Long id, UserInsertDTO dto) {
         try{
             User entity = repository.getOne(id);
