@@ -9,12 +9,12 @@ import com.example.project.repositories.TicketRepository;
 import com.example.project.repositories.UserRepository;
 import com.example.project.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class TicketService {
@@ -36,12 +36,11 @@ public class TicketService {
     }
 
     @Transactional(readOnly = true)
-    public List<TicketDTO> findTicketsByUserId (Long userId) {
+    public Page<TicketDTO> findTicketsByUserId (Long userId, Pageable pageable) {
         Optional<User> obj = userRepository.findById(userId);
-        obj.orElseThrow(() -> new ResourceNotFoundException("user id not found"));
-        List<Ticket> tickets = repository.findTicketsByUserId(userId);
-        List<TicketDTO> ticketDTOS = tickets.stream().map(x -> new TicketDTO(x)).collect(Collectors.toList());
-        return ticketDTOS;
+        User user = obj.orElseThrow(() -> new ResourceNotFoundException("user id not found"));
+        Page<Ticket> page = repository.findByUser(user, pageable);
+        return page.map( x -> new TicketDTO(x));
     }
 
     @Transactional

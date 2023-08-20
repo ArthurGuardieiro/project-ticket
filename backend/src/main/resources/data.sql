@@ -18,5 +18,6 @@ INSERT INTO tb_event (name, addres, city_id, date) VALUES ('Balada da Barra', 'B
 INSERT INTO tb_event (name, addres, city_id, date) VALUES ('Calvin Harris', 'Morumbi', 3, TIMESTAMP WITH TIME ZONE '2023-06-14T14:00:00Z');
 
 INSERT INTO tb_ticket (price, user_id, event_id) VALUES (300.0, 1, 1);
+INSERT INTO tb_ticket (price, user_id, event_id) VALUES (100.0, 1, 2);
 INSERT INTO tb_ticket (price, user_id, event_id) VALUES (550.0, 2, 1);
 INSERT INTO tb_ticket (price, user_id, event_id) VALUES (300.0, 3, 1);
