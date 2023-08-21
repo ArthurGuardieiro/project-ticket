@@ -26,7 +26,10 @@ public class SecurityConfigurations {
 
     private static final String[] PUBLIC = { "/auth/login", "/auth/register", "/h2-console/**" };
     private static final String[] PUBLIC_GET = { "/events/**", "/tickets/**", "/cities/**" };
+
+    private static final String[] MEMBER_GET = {"/users/{id}"};
     private static final String[] MEMBER_OR_ADMIN = { "/events", "/tickets" };
+
     private static final String[] ADMIN = {"/users/**", "/cities/**" };
 
     @Bean
@@ -38,6 +41,7 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(PUBLIC).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_GET).permitAll()
+                        .requestMatchers(HttpMethod.GET, MEMBER_GET).hasAnyRole("ADMIN", "MEMBER")
                         .requestMatchers(HttpMethod.POST ,MEMBER_OR_ADMIN).hasAnyRole("ADMIN", "MEMBER")
                         .requestMatchers(ADMIN).hasRole("ADMIN")
                         .anyRequest().authenticated()

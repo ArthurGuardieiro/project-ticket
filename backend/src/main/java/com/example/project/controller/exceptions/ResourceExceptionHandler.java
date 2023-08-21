@@ -3,6 +3,7 @@ package com.example.project.controller.exceptions;
 import com.example.project.services.exceptions.DatabaseException;
 import com.example.project.services.exceptions.ForbiddenException;
 import com.example.project.services.exceptions.ResourceNotFoundException;
+import com.example.project.services.exceptions.UnauthorizedException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +63,12 @@ public class ResourceExceptionHandler {
     public ResponseEntity<AuthCustomError> forbbiden (ForbiddenException e, HttpServletRequest request) {
         AuthCustomError err = new AuthCustomError("Forbidden", e.getMessage());
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<AuthCustomError> unauthorized (UnauthorizedException e, HttpServletRequest request) {
+        AuthCustomError err = new AuthCustomError("Unauthorized", e.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
     }
 
 }

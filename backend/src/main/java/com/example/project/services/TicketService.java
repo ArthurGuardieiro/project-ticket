@@ -28,6 +28,9 @@ public class TicketService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private AuthService authService;
+
     @Transactional(readOnly = true)
     public TicketDTO findById (Long id) {
         Optional<Ticket> obj = repository.findById(id);
@@ -36,9 +39,8 @@ public class TicketService {
     }
 
     @Transactional(readOnly = true)
-    public Page<TicketDTO> findTicketsByUserId (Long userId, Pageable pageable) {
-        Optional<User> obj = userRepository.findById(userId);
-        User user = obj.orElseThrow(() -> new ResourceNotFoundException("user id not found"));
+    public Page<TicketDTO> findTicketsByCurrentUser (Pageable pageable) {
+        User user = authService.authenticated();
         Page<Ticket> page = repository.findByUser(user, pageable);
         return page.map( x -> new TicketDTO(x));
     }

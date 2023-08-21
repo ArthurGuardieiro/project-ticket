@@ -29,9 +29,12 @@ public class UserService {
 
     @Autowired
     private CityRepository cityRepository;
+    @Autowired
+    private AuthService authService;
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id){
+        authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow( () -> new ResourceNotFoundException("id not found"));
         return new UserDTO(entity);

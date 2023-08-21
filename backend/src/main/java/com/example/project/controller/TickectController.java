@@ -24,9 +24,9 @@ public class TickectController {
         return ResponseEntity.ok(dto);
     }
 
-    @GetMapping(value = "/{userId}/tickets")
-    public ResponseEntity<Page<TicketDTO>> findTicketsByUserId(@PathVariable Long userId, Pageable pageable) {
-        Page<TicketDTO> dto = service.findTicketsByUserId(userId, pageable);
+    @GetMapping
+    public ResponseEntity<Page<TicketDTO>> findTicketsByCurrentUser(Pageable pageable) {
+        Page<TicketDTO> dto = service.findTicketsByCurrentUser(pageable);
         return ResponseEntity.ok(dto);
     }
 
