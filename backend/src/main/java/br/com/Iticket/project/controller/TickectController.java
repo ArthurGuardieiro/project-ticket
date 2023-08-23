@@ -3,6 +3,7 @@ package br.com.Iticket.project.controller;
 
 import br.com.Iticket.project.DTO.TicketDTO;
 import br.com.Iticket.project.services.TicketService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +33,7 @@ public class TickectController {
     }
 
     @PostMapping
-    public ResponseEntity<TicketDTO> insert (@RequestBody TicketDTO dto) {
+    public ResponseEntity<TicketDTO> insert (@Valid @RequestBody TicketDTO dto) {
         TicketDTO newDto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}")
                 .buildAndExpand(newDto.getId()).toUri();

@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 public class CityDTO {
 
     private Long id;
-    @NotBlank(message = "campo obrigatório")
+    @NotBlank(message = "Campo obrigatório")
     private String name;
-    @NotBlank(message = "campo obrigatório")
+    @NotBlank(message = "Campo obrigatório")
     private String state;
 
     public CityDTO(){

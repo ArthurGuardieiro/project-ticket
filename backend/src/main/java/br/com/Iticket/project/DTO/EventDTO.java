@@ -3,14 +3,21 @@ package br.com.Iticket.project.DTO;
 
 
 import br.com.Iticket.project.entities.Event;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.Instant;
 
 public class EventDTO {
 
     private Long id;
+    @Size(min = 3, max = 60, message = "Nome deve ter entre 3 e 60 caracteres")
+    @NotBlank(message = "Campo obrigatório")
     private String name;
     private String addres;
+    @Future
     private Instant date;
     private Long cityId;
 

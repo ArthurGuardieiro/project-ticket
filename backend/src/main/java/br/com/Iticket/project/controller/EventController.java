@@ -3,6 +3,7 @@ package br.com.Iticket.project.controller;
 
 import br.com.Iticket.project.DTO.EventDTO;
 import br.com.Iticket.project.services.EventService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +40,7 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<EventDTO> insert (@RequestBody EventDTO dto) {
+    public ResponseEntity<EventDTO> insert (@Valid @RequestBody EventDTO dto) {
         EventDTO newDto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newDto.getId()).toUri();

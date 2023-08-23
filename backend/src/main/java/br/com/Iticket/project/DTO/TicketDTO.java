@@ -2,10 +2,12 @@ package br.com.Iticket.project.DTO;
 
 
 import br.com.Iticket.project.entities.Ticket;
+import jakarta.validation.constraints.PositiveOrZero;
 
 public class TicketDTO {
 
     private Long id;
+    @PositiveOrZero(message = "valor deve ser positivo ou igual a zero")
     private Double price;
     private Long user_id;
     private Long event_id;
