@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import java.util.List;
 import java.util.Optional;
 
 @DataJpaTest
@@ -54,11 +55,27 @@ public class EventRepositoryTests {
     public void findByIdShouldReturnNullOptionWhenIdDoesNotExists() {
 
         Optional<Event> obj = repository.findById(nonExistingId);
-
         Assertions.assertFalse(obj.isPresent());
 
     }
 
+    @Test
+    public void findEventsByCityIdShouldReturnListOfEventsWhenCityIdExists() {
 
+        List<Event> eventList = repository.findEventsByCityId(existingId);
+
+        Assertions.assertNotNull(eventList);
+        Assertions.assertFalse(eventList.isEmpty());
+
+    }
+
+    @Test
+    public void findEventsByCityIdShouldReturnEmptyListWhenCityIdDoesNotExists() {
+
+        List<Event> eventList = repository.findEventsByCityId(nonExistingId);
+
+        Assertions.assertTrue(eventList.isEmpty());
+
+    }
 
 }

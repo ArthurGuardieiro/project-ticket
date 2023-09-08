@@ -13,7 +13,7 @@ public class Factory {
     }
 
     public static City createCity() {
-        City city = new City(1L, "Uberlândia", "MG");
+        City city = new City(5L, "Guarujá", "SP");
         return city;
     }
 
