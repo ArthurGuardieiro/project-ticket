@@ -21,7 +21,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,9 +115,11 @@ public class EventServiceTests {
     }
 
     @Test
-    public void InsertShouldPersist() {
+    public void insertShouldReturnDTO() {
 
+        EventDTO dto = service.insert( new EventDTO(event) );
 
+        Assertions.assertNotNull(dto);
 
     }
 

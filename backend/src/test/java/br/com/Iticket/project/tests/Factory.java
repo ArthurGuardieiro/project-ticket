@@ -8,7 +8,7 @@ import java.time.Instant;
 public class Factory {
 
     public static Event createEvent () {
-        Event event = new Event(5L, "Rock in rio", "Copacabana", new City(2L, "Rio de janeiro", "RJ"), Instant.parse("2023-06-14T14:00:00Z"));
+        Event event = new Event(5L, "Rock in rio", "Copacabana", new City(1L, "Rio de janeiro", "RJ"), Instant.parse("2023-06-14T14:00:00Z"));
         return event;
     }
 
