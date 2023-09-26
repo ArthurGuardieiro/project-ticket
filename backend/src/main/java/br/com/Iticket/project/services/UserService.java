@@ -14,6 +14,7 @@ import br.com.Iticket.project.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,6 +48,7 @@ public class UserService {
             User entity = repository.getOne(id);
             copyDtoToEntity(entity, dto);
             entity = repository.save(entity);
+            System.out.println(entity.getPassword());
             return new UserDTO(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found");
@@ -67,7 +69,8 @@ public class UserService {
     private void copyDtoToEntity(User entity, UserInsertDTO dto) {
         entity.setEmail(dto.getEmail());
         entity.setName(dto.getName());
-        entity.setPassword(dto.getPassword());
+        String encryptedPassword = new BCryptPasswordEncoder().encode(dto.getPassword());
+        entity.setPassword(encryptedPassword);
         Optional<Role> roleObj = roleRepository.findById(dto.getRole_id());
         Role role = roleObj.orElseThrow( () -> new ResourceNotFoundException("role id not found") );
         entity.setRole(role);
