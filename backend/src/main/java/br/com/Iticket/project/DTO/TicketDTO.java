@@ -1,7 +1,7 @@
 package br.com.Iticket.project.DTO;
 
 
-import br.com.Iticket.project.entities.Ticket;
+import br.com.Iticket.project.model.Ticket;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class TicketDTO {

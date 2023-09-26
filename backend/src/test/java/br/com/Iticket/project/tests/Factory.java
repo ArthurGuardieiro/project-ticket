@@ -1,7 +1,9 @@
 package br.com.Iticket.project.tests;
 
-import br.com.Iticket.project.entities.City;
-import br.com.Iticket.project.entities.Event;
+import br.com.Iticket.project.model.City;
+import br.com.Iticket.project.model.Event;
+import br.com.Iticket.project.model.Role;
+import br.com.Iticket.project.model.User;
 
 import java.time.Instant;
 
@@ -16,5 +18,13 @@ public class Factory {
         City city = new City(5L, "Guarujá", "SP");
         return city;
     }
+
+    public static User createUser() {
+        User user = new User(1L, "jonas@gmail.com", "$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG", "arthur");
+        user.setCity( Factory.createCity() );
+        user.setRole( new Role(1L, "ROLE_ADMIN") );
+        return user;
+    }
+
 
 }

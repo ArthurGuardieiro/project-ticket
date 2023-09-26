@@ -1,6 +1,6 @@
 package br.com.Iticket.project.config;
 
-import br.com.Iticket.project.repositories.UserRepository;
+import br.com.Iticket.project.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

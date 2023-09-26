@@ -2,7 +2,7 @@ package br.com.Iticket.project.controller;
 
 import br.com.Iticket.project.DTO.UserDTO;
 import br.com.Iticket.project.DTO.UserInsertDTO;
-import br.com.Iticket.project.services.UserService;
+import br.com.Iticket.project.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

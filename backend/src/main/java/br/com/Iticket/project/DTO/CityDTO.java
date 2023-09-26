@@ -1,6 +1,6 @@
 package br.com.Iticket.project.DTO;
 
-import br.com.Iticket.project.entities.City;
+import br.com.Iticket.project.model.City;
 import jakarta.validation.constraints.NotBlank;
 
 public class CityDTO {

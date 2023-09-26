@@ -1,6 +1,6 @@
 package br.com.Iticket.project.DTO;
 
-import br.com.Iticket.project.services.validation.UserInsertValid;
+import br.com.Iticket.project.service.validation.UserInsertValid;
 
 @UserInsertValid
 public class UserInsertDTO extends UserDTO{

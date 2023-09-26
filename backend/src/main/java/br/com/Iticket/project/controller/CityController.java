@@ -2,7 +2,7 @@ package br.com.Iticket.project.controller;
 
 
 import br.com.Iticket.project.DTO.CityDTO;
-import br.com.Iticket.project.services.CityService;
+import br.com.Iticket.project.service.CityService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,10 @@
 package br.com.Iticket.project.controller.exceptions;
 
 
-import br.com.Iticket.project.services.exceptions.DatabaseException;
-import br.com.Iticket.project.services.exceptions.ForbiddenException;
-import br.com.Iticket.project.services.exceptions.ResourceNotFoundException;
-import br.com.Iticket.project.services.exceptions.UnauthorizedException;
+import br.com.Iticket.project.service.exceptions.DatabaseException;
+import br.com.Iticket.project.service.exceptions.ForbiddenException;
+import br.com.Iticket.project.service.exceptions.ResourceNotFoundException;
+import br.com.Iticket.project.service.exceptions.UnauthorizedException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

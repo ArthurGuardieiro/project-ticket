@@ -2,7 +2,7 @@ package br.com.Iticket.project.DTO;
 
 
 
-import br.com.Iticket.project.entities.Role;
+import br.com.Iticket.project.model.Role;
 
 import java.io.Serializable;
 

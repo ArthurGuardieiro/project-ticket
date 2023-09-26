@@ -1,6 +1,6 @@
 package br.com.Iticket.project.DTO;
 
-import br.com.Iticket.project.entities.User;
+import br.com.Iticket.project.model.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 

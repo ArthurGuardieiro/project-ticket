@@ -2,9 +2,8 @@ package br.com.Iticket.project.DTO;
 
 
 
-import br.com.Iticket.project.entities.Event;
+import br.com.Iticket.project.model.Event;
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

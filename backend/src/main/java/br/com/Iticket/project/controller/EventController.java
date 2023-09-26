@@ -2,7 +2,7 @@ package br.com.Iticket.project.controller;
 
 
 import br.com.Iticket.project.DTO.EventDTO;
-import br.com.Iticket.project.services.EventService;
+import br.com.Iticket.project.service.EventService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
