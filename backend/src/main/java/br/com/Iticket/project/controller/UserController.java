@@ -22,6 +22,12 @@ public class UserController {
         return ResponseEntity.ok(dto);
     }
 
+    @GetMapping
+    public ResponseEntity<UserDTO> currenteUser() {
+        UserDTO dto = service.findCurrentUser();
+        return ResponseEntity.ok(dto);
+    }
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserDTO> update(@PathVariable Long id, @Valid @RequestBody UserInsertDTO dto){
         UserDTO newDto = service.update(id, dto);

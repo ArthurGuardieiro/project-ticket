@@ -28,16 +28,15 @@ public class SecurityConfigurations {
     private static final String[] PUBLIC = { "/auth/login", "/auth/register", "/h2-console/**" };
     private static final String[] PUBLIC_GET = { "/events/**", "/tickets/**", "/cities/**" };
 
-    private static final String[] MEMBER_GET = {"/users/{id}"};
+    private static final String[] MEMBER_GET = {"/users/{id}", "/users"};
     private static final String[] MEMBER_OR_ADMIN = { "/events", "/tickets" };
-
-    private static final String[] ADMIN = {"/users/**", "/cities/**" };
+    private static final String[] ADMIN = {"/users/**", "/cities/**", "/users" };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         return httpSecurity
-                .csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(PUBLIC).permitAll()

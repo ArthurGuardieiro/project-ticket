@@ -80,4 +80,8 @@ public class UserService {
     }
 
 
+    public UserDTO findCurrentUser() {
+        User user = authService.authenticated();
+        return new UserDTO(user);
+    }
 }
